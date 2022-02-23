@@ -3,14 +3,12 @@ package servicesImpl;
 import enums.Gender;
 import enums.Role;
 import exceptions.StaffNotAuthorizedException;
-import models.Customer;
-import models.Staff;
-import models.Store;
-import models.TransactionData;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -66,5 +64,14 @@ public class CashierServicesImplTest {
         customerServicesImpl.checkout(customer1,store1);
         cashierServicesImpl.printReceipt(3,store1);
         assertNotNull(store1.getTransactionHistory());
+    }
+
+    @Test
+    public void cashierCanViewProduct() throws IOException {
+        cashierServicesImpl.fetchProductFromStore(staff1,store1,"productData.xlsx");
+        List<Product> electronicGoods = cashierServicesImpl.viewProductByCategory(store1, "CLOTHING");
+        assertTrue(electronicGoods.get(0).getCategory().getName().equals("CLOTHING"));
+        assertTrue(electronicGoods.get(1).getCategory().getName().equals("CLOTHING"));
+        assertTrue(electronicGoods.get(2).getCategory().getName().equals("CLOTHING"));
     }
 }

@@ -1,15 +1,12 @@
 package services;
 
-import models.Customer;
 import models.Staff;
 import models.Store;
-import servicesImpl.CashierServicesImpl;
 
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.IOException;
 
-public interface CashierServices {
+public interface CashierServices extends CommonClassImpl {
     void fetchProductFromStore(Staff staff, Store store, String filename) throws IOException;
-    void viewProductsByCategory(Staff staff, Store store);
     void printReceipt(Integer customerId, Store store);
 }

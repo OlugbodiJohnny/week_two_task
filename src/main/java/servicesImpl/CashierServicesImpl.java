@@ -3,8 +3,6 @@ package servicesImpl;
 import enums.Role;
 import exceptions.StaffNotAuthorizedException;
 import models.*;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -14,13 +12,9 @@ import services.StaffServices;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
-import static java.sql.JDBCType.NUMERIC;
-import static javax.management.openmbean.SimpleType.STRING;
 
 public class CashierServicesImpl implements CashierServices, StaffServices {
     @Override
@@ -33,7 +27,7 @@ public class CashierServicesImpl implements CashierServices, StaffServices {
         try {
             File file = new File(fileToReadFrom);   //creating a new file instance
             FileInputStream fis = new FileInputStream(file);   //obtaining bytes from the file
-//creating Workbook instance that refers to .xlsx file
+            //creating Workbook instance that refers to .xlsx file
             XSSFWorkbook wb = new XSSFWorkbook(fis);
             XSSFSheet sheet = wb.getSheetAt(0);     //creating a Sheet object to retrieve object
             //iterating over Excel file
@@ -90,11 +84,6 @@ public class CashierServicesImpl implements CashierServices, StaffServices {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void viewProductsByCategory(Staff staff, Store store) {
-
     }
 
     @Override

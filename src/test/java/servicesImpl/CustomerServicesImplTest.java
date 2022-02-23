@@ -107,4 +107,11 @@ public class CustomerServicesImplTest {
         assertTrue(customerServicesImpl.checkout(customer1,store1));
     }
 
+    @Test
+    public void customerCanViewProduct(){
+        List<Product> electronicGoods = customerServicesImpl.viewProductByCategory(store1, "ELECTRONICS");
+        assertTrue(electronicGoods.get(0).getCategory().getName().equals("ELECTRONICS"));
+        assertTrue(electronicGoods.get(1).getCategory().getName().equals("ELECTRONICS"));
+        assertTrue(electronicGoods.get(2).getCategory().getName().equals("ELECTRONICS"));
+    }
 }
